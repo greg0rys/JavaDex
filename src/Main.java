@@ -1,3 +1,4 @@
+import Base_Classes.Pokemon;
 import Data.HTTP_BASIC_INFO_REQUEST;
 import Data.HTTP_SPRITE_REQUEST;
 import Helpers.App_Driver;
@@ -24,6 +25,12 @@ public class Main
         out.println(res);
         JSONObject jo = new JSONObject(b.get_name(180));
         out.println(jo.get("id") + " " + jo.get("name"));
+        Pokemon flaffy = new Pokemon();
+        flaffy.set_id((Integer) jo.get("id"));
+        flaffy.set_name((String)jo.get("name"));
+        flaffy.set_sprite(t.get_URL());
+
+        out.printf("Pokemon number %d: %s",flaffy.getId_num(),flaffy.get_name());
         save_image(t, output);
 
     }
