@@ -1,4 +1,8 @@
-import Data.HTTP_REQUEST;
+import Data.HTTP_BASIC_INFO_REQUEST;
+import Data.HTTP_SPRITE_REQUEST;
+import Helpers.App_Driver;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.net.URL;
@@ -10,12 +14,18 @@ public class Main
     public static void main( String[] args ) throws IOException
     {
         String output = "ditto.jpg";
+        App_Driver ad = new App_Driver();
+        StringBuffer two = ad.test_run();
 
-        HTTP_REQUEST t = new HTTP_REQUEST(350);
+        HTTP_SPRITE_REQUEST t = new HTTP_SPRITE_REQUEST(180);
+        HTTP_BASIC_INFO_REQUEST b = new HTTP_BASIC_INFO_REQUEST();
         out.println(t.get_URL());
         StringBuffer res = t.read_res();
         out.println(res);
+        JSONObject jo = new JSONObject(b.get_name(180));
+        out.println(jo.get("id") + " " + jo.get("name"));
         save_image(t, output);
+
     }
 
     /**
@@ -24,7 +34,7 @@ public class Main
      * @param dest
      * @throws IOException
      */
-    public static void save_image(HTTP_REQUEST rq, String dest) throws IOException
+    public static void save_image( HTTP_SPRITE_REQUEST rq, String dest) throws IOException
     {
         URL url = new URL(rq.get_URL());
         InputStream is = url.openStream();

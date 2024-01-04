@@ -1,6 +1,5 @@
 package Data;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +7,7 @@ import java.net.*;
 
 import static java.lang.System.out;
 
-public class HTTP_REQUEST
+public class HTTP_SPRITE_REQUEST
 {
 
     private final String POKEAPI_SPRITE_URL = "https://raw.githubusercontent" +
@@ -18,8 +17,8 @@ public class HTTP_REQUEST
     private HttpURLConnection connection; // the http connection
     private int pkmn_number; // pokemons number in dex
 
-    public HTTP_REQUEST(){}
-    public HTTP_REQUEST(int num) throws IOException
+    public HTTP_SPRITE_REQUEST(){}
+    public HTTP_SPRITE_REQUEST( int num) throws IOException
     {
         pkmn_number = num;
         poke_query = create_sprite_URL(pkmn_number);
